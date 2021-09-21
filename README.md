@@ -2,13 +2,13 @@
 
 A basic, no-frills, Next.js boilerplate that includes the follwing:
 
-✅ &nbsp; Typescript
-✅ &nbsp; Next Auth
-✅ &nbsp; TailwindCSS
-✅ &nbsp; Mongoose
-✅ &nbsp; FontAwesome icons
-✅ &nbsp; Testing with Cypress
-✅ &nbsp; Eslint with Airbnb config and Prettier
+✅ &nbsp; Typescript <br />
+✅ &nbsp; Next Auth <br />
+✅ &nbsp; TailwindCSS <br />
+✅ &nbsp; Mongoose <br />
+✅ &nbsp; FontAwesome icons <br />
+✅ &nbsp; Testing with Cypress <br />
+✅ &nbsp; Eslint with Airbnb config and Prettier <br />
 
 ### Getting Started
 
@@ -33,6 +33,10 @@ And finally, run
 ```bash
 yarn dev
 ```
+
+### Models
+
+Mongoose models are located in the <b>models</b> folder. A simple user model has been provided.
 
 ### Testing
 

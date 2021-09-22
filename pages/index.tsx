@@ -10,13 +10,22 @@ const Home: NextPage = ({ session }) => {
     <div className="text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       {session && session.user ? (
         <Fragment>
-          <Image
-            src={session.user.image}
-            alt={`Avatar of ${session.user.email}`}
-            width={50}
-            height={50}
-            className="rounded-full"
-          />
+          {session.user?.image ? (
+            <Image
+              src={session.user.image}
+              alt={`Avatar of ${session.user.email}`}
+              width={50}
+              height={50}
+              className="rounded-full"
+            />
+          ) : (
+            <Image
+              src="https://images.unsplash.com/photo-1502134249126-9f3755a50d78?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
+              width={50}
+              height={50}
+              className="rounded-full"
+            />
+          )}
           <h3 className="mt-2 text-sm font-medium text-gray-900">
             You're logged in as {session.user.email}
           </h3>

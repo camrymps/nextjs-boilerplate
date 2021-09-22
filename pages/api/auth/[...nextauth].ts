@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
+import { ObjectId } from 'mongodb';
 import clientPromise from '../../../lib/mongodb';
 import EmailProvider from 'next-auth/providers/email';
 import FacebookProvider from 'next-auth/providers/facebook';
@@ -8,13 +9,16 @@ import GoogleProvider from 'next-auth/providers/google';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function auth(req: NextApiRequest, res: NextApiResponse) {
+  const mongoClient = await clientPromise;
+
   return NextAuth(req, res, {
     // Configure one or more authentication providers
     session: {
       jwt: true,
     },
     adapter: MongoDBAdapter({
-      db: (await clientPromise).db(process.env.MONGODB_AUTH_DATABASE),
+      db: () => mongoClient.db(process.env.MONGODB_AUTH_DATABASE),
+      ObjectId
     }),
     pages: {
       signIn: '/auth/login',

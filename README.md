@@ -34,6 +34,10 @@ And finally, run
 yarn dev
 ```
 
+### Linting
+
+It is recommended you add ESLint and Prettier extensions to your IDE (if it supports them). For example, when using VSCode you can install the ESLint extension, located [here](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), and the Prettier extension, located [here](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
 ### Models
 
 Mongoose models are located in the <b>models</b> folder. A simple user model has been provided.

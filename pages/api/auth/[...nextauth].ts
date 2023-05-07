@@ -10,14 +10,11 @@ import { NextApiRequest, NextApiResponse } from 'next';
 export default async function auth(req: NextApiRequest, res: NextApiResponse) {
   return NextAuth(req, res, {
     // Configure one or more authentication providers
-    session: {
-      jwt: true,
-    },
-    adapter: MongoDBAdapter({
-      db: (await clientPromise).db(process.env.MONGODB_AUTH_DATABASE),
-    }),
+    session: { strategy: 'jwt' },
+    adapter: MongoDBAdapter(clientPromise),
     pages: {
       signIn: '/auth/login',
+      error: '/api/auth/error',
     },
     providers: [
       EmailProvider({
@@ -37,7 +34,9 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
       }),
       TwitterProvider({
+        // @ts-ignore
         clientId: process.env.TWITTER_CLIENT_ID,
+        // @ts-ignore
         clientSecret: process.env.TWITTER_CLIENT_SECRET,
       }),
       GoogleProvider({
